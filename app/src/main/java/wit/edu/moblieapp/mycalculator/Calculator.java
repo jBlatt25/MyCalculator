@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.RadioButton;
 
 public class Calculator extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -23,14 +22,19 @@ public class Calculator extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+
+
+                intent.putExtras(bundle);
                 intent.setClass(Calculator.this, Result.class);
+
                 Log.v("MyApp","displaying result");
+
                 startActivity(intent);
 
             }
         });
         }
-
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
@@ -43,8 +47,9 @@ public class Calculator extends AppCompatActivity {
                     break;
             case R.id.radioMale:
                 if (checked)
-                    // Ninjas rule
+
                     break;
         }
     }
+
 }
