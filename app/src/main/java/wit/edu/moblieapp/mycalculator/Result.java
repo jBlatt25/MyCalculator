@@ -14,16 +14,21 @@ public class Result extends AppCompatActivity {
 
         Bundle bundle = this.getIntent().getExtras();
         String gender = bundle.getString("Gender");
-        String feet = bundle.getString("Feet");
-        String inches = bundle.getString("Inches");
+        int feet = bundle.getInt("feet");
+        int inches = bundle.getInt("inch");
+        double weight = bundle.getDouble("weight");
 
-        TextView textfeet = (TextView)findViewById(R.id.textfeet);
-        textfeet.setText("feet:" +feet );
-        TextView textinches = (TextView)findViewById(R.id.textinches);
-        textinches.setText("inches" + inches);
-
+        //display gender
         TextView textgender = (TextView)findViewById(R.id.textgender);
-        textgender.setText("Your gender is " + gender);
+        textgender.setText("You are " + gender);
+        //display height
+        TextView textfeet = (TextView)findViewById(R.id.textfeet);
+        textfeet.setText("Your height is " + feet + "'" + inches + '"' );
+        //display weight
+        TextView textinches = (TextView) findViewById(R.id.textinches);
+        textinches.setText("The standard weight is " + weight + " kg");
+
+
 
 
 

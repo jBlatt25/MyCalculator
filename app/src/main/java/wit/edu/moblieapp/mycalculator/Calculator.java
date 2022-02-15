@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -24,8 +25,8 @@ public class Calculator extends AppCompatActivity {
         RadioButton buttonFemale = (RadioButton)findViewById(R.id.radioFemale);
         RadioButton buttonMale = (RadioButton)findViewById(R.id.radioMale);
 
-        TextView textFeet = (TextView)findViewById(R.id.textFeet);
-        TextView textInches = (TextView)findViewById(R.id.textInches);
+        EditText textFeet = (EditText)findViewById(R.id.editfeet);
+        EditText textInches = (EditText)findViewById(R.id.editinches);
 
         //define the "calculate" button
         Button activity1_btn = (Button)findViewById(R.id.calbutton);
@@ -39,15 +40,31 @@ public class Calculator extends AppCompatActivity {
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
 
+
+                //get feet and bundle
+                String feet = textFeet.getText().toString();
+                int numfeet = Integer.parseInt(feet);
+                bundle.putInt("feet",numfeet);
+                //get inch and bundle
+                String inch = textInches.getText().toString();
+                int numinch = Integer.parseInt(inch);
+                bundle.putInt("inch",numinch);
+                double height = (numfeet * 12) + numinch;
                 //check if the male or female button is checked
                 if (buttonFemale.isChecked())
                 {
                     bundle.putString("Gender","Female"); //sned female to bundle
+                    double weight =  (45.5 + (2.3* (height - 60)));
+                    bundle.putDouble("weight",weight);
                 }
                 else if (buttonMale.isChecked())
                 {
                     bundle.putString("Gender","Male"); //send male to bundle
+                    double weight =  (50 + (2.3* (height - 60)));
+                    bundle.putDouble("weight",weight);
                 }
+
+
 
 
                 intent.putExtras(bundle); //send the information bundle
