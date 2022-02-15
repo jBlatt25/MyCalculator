@@ -13,7 +13,14 @@ public class Result extends AppCompatActivity {
         setContentView(R.layout.result);
 
         Bundle bundle = this.getIntent().getExtras();
-        String gender = bundle.getString("gender");
+        String gender = bundle.getString("Gender");
+        String feet = bundle.getString("Feet");
+        String inches = bundle.getString("Inches");
+
+        TextView textfeet = (TextView)findViewById(R.id.textfeet);
+        textfeet.setText("feet:" +feet );
+        TextView textinches = (TextView)findViewById(R.id.textinches);
+        textinches.setText("inches" + inches);
 
         TextView textgender = (TextView)findViewById(R.id.textgender);
         textgender.setText("Your gender is " + gender);
